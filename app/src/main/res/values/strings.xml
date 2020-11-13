@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">DogBreeds</string>
     <string name="generic_error">There was an error!</string>
-    <string name="avatar">Avatar of breed</string>
     <string name="try_again">Try again</string>
 </resources>

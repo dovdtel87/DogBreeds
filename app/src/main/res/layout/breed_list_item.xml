@@ -47,24 +47,15 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_end="@dimen/guide_lines_margins" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:contentDescription="@string/avatar"
-            app:layout_constraintStart_toStartOf="@+id/guideLineStart"
-            app:layout_constraintTop_toTopOf="@+id/guideLineTop"
-            android:src="@drawable/ic_launcher_foreground" />
-
         <TextView
             android:id="@+id/breed_name"
             style="@style/text_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/guideLineEnd"
-            app:layout_constraintStart_toEndOf="@+id/logo"
-            app:layout_constraintTop_toTopOf="@+id/logo"
+            android:paddingBottom="8dp"
+            app:layout_constraintStart_toStartOf="@+id/guideLineStart"
+            app:layout_constraintTop_toTopOf="@+id/guideLineTop"
             tools:ignore="RtlSymmetry"
             tools:text="Dogo" />
 

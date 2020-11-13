@@ -1,7 +1,6 @@
 package com.dmgdavid2109.dogbreeds.breeds.ui.details
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -10,6 +9,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.dmgdavid2109.dogbreeds.R
 import com.dmgdavid2109.dogbreeds.common.ui.setToolbar
+import com.dmgdavid2109.dogbreeds.common.ui.setViewModelInputs
+import com.dmgdavid2109.dogbreeds.common.ui.setViewState
 import com.dmgdavid2109.dogbreeds.common.ui.viewBinding
 import com.dmgdavid2109.dogbreeds.databinding.BreedDetailFragmentBinding
 import javax.inject.Inject
@@ -37,12 +38,13 @@ class BreedDetailFragment @Inject constructor(
     }
 
     private fun bindView() {
-
+        binding.loadingView.setViewModelInputs(viewModel)
         viewModel.viewState.observe(viewLifecycleOwner, Observer { viewState ->
             with(viewState.images) {
-                this.forEach {
-                    Log.d("Test", "Details: $it")
-                }
+                val listAdapter = ViewPagerAdapter()
+                binding.viewpager.adapter = listAdapter
+                listAdapter.submitList(this)
+                binding.loadingView.setViewState(viewState)
             }
         })
     }

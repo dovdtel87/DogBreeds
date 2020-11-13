@@ -24,43 +24,20 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/guide_lines_margins" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/guide_lines_margins" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLineTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="@dimen/guide_lines_margins" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideLineBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_end="@dimen/guide_lines_margins" />
-
-    <ImageView
-        android:id="@+id/repo_logo"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
         android:layout_marginTop="?attr/actionBarSize"
-        android:contentDescription="@string/avatar"
-        app:layout_constraintEnd_toStartOf="@+id/guideLineEnd"
-        app:layout_constraintStart_toStartOf="@id/guideLineStart"
-        app:layout_constraintTop_toTopOf="@+id/guideLineTop"
-        tools:src="@drawable/ic_launcher_foreground" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.dmgdavid2109.dogbreeds.common.ui.customviews.LoadingView
+        android:id="@+id/loading_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

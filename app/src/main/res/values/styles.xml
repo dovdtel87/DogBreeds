@@ -16,12 +16,13 @@
     </style>
 
     <style name="text_title" parent="@style/TextAppearance.AppCompat.Medium">
-        <item name="android:maxLines">1</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="text_subtitle" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
 </resources>
