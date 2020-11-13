@@ -17,7 +17,7 @@ As DI framework I used Dagger Hilt, its configuration is done in the subfolder D
 The management of the response is done with `RxJava`, using `Moshi` library to adapt the response.
 
 I decided to create two models for the Network Response `BreedResponse` and `ImageResponse` and the one used in the domain is `Breed`, the transformation is done in a  `Mapper`
-  
+
 The project use the `UseCases` pattern in order to help identify the different use cases the app could have, in this case `GetAllBreeds` and `GetBreedImages`
 
 In order to handle the navigation between the two fragments I decided to use the Android Navigation Component and adding an animation between the screens.

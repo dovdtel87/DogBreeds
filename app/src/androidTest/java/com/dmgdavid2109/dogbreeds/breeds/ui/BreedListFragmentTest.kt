@@ -49,7 +49,7 @@ class RepositoriesListFragmentTest {
         startFragment(viewModel)
 
         // Then
-        onView(withId(R.id.breed_name)).check(ViewAssertions.matches(ViewMatchers.withText("Doberman")))
+        onView(withId(R.id.breed_name)).check(ViewAssertions.matches(ViewMatchers.withText("Doberman ")))
     }
 
     @Test
