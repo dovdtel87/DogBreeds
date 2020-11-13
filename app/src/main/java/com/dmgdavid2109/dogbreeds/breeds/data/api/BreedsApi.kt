@@ -14,7 +14,7 @@ interface BreedsApi {
 
     @GET("breed/{breed}/images/random/{number}")
     fun retrieveBreedImages(
-        @Path("breed") breed: Breed,
+        @Path("breed") breed: String,
         @Path("number") number: Int = 10
     ): Single<ImagesResponse>
 

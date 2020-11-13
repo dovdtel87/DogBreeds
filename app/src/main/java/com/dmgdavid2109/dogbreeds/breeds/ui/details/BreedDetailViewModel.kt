@@ -51,7 +51,7 @@ class BreedDetailViewModel(
         }
     }
 
-    private fun showImages(items: List<Breed>) {
+    private fun showImages(items: List<String>) {
         _viewState.updateCurrentState {
             copy(
                 isLoading = false,

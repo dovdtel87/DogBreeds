@@ -1,6 +1,7 @@
 package com.dmgdavid2109.dogbreeds.breeds.data.mapper
 
 import com.dmgdavid2109.dogbreeds.breeds.data.model.BreedResponse
+import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
 import junit.framework.TestCase.assertEquals
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
@@ -13,11 +14,11 @@ object BreedsMapperTest : Spek({
 
     val expectedResult =
         listOf(
-            "doberman",
-            "schnauzer giant",
-            "schnauzer miniature",
-            "shiba",
-            "weimaraner"
+            Breed("doberman"),
+            Breed("schnauzer","giant"),
+            Breed("schnauzer","miniature"),
+            Breed("shiba"),
+            Breed("weimaraner")
         )
 
     val mapResponse = mapOf<String, List<String>>(

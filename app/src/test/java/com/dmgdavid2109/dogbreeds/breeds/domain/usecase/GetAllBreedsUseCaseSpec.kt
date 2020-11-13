@@ -2,6 +2,7 @@ package com.dmgdavid2109.dogbreeds.breeds.domain.usecase
 
 import com.dmgdavid2109.dogbreeds.breeds.data.mapper.BreedMapper
 import com.dmgdavid2109.dogbreeds.breeds.data.model.BreedResponse
+import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
 import com.dmgdavid2109.dogbreeds.breeds.domain.repository.BreedsRepository
 import com.dmgdavid2109.dogbreeds.common.network.TestSchedulerProvider
 import com.dmgdavid2109.dogbreeds.helpers.mock
@@ -39,11 +40,11 @@ object GetAllBreedsUseCaseSpec : Spek({
             it("retrieves a list of dog breeds") {
                 val expectedResult =
                     listOf(
-                        "doberman",
-                        "schnauzer giant",
-                        "schnauzer miniature",
-                        "shiba",
-                        "weimaraner"
+                        Breed("doberman"),
+                        Breed("schnauzer","giant"),
+                        Breed("schnauzer","miniature"),
+                        Breed("shiba"),
+                        Breed("weimaraner")
                     )
                 val testObserver = useCase.invoke().test()
                 testObserver.assertValue(expectedResult)

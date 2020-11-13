@@ -2,6 +2,7 @@ package com.dmgdavid2109.dogbreeds.breeds.domain.usecase
 
 import com.dmgdavid2109.dogbreeds.breeds.data.mapper.ImagesMapper
 import com.dmgdavid2109.dogbreeds.breeds.data.model.ImagesResponse
+import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
 import com.dmgdavid2109.dogbreeds.breeds.domain.repository.BreedsRepository
 import com.dmgdavid2109.dogbreeds.common.network.TestSchedulerProvider
 import com.dmgdavid2109.dogbreeds.helpers.mock
@@ -34,11 +35,11 @@ object GetBreedImageUseCaseSpec : Spek({
     describe("invoke") {
         context("when it success") {
             beforeEachTest {
-                every { breedsRepository.getBreedImages("doberman") } returns Single.just(imagesResponse)
+                every { breedsRepository.getBreedImages(Breed("doberman")) } returns Single.just(imagesResponse)
             }
 
             it("retrieves a list of images") {
-                val testObserver = useCase.invoke("doberman").test()
+                val testObserver = useCase.invoke(Breed("doberman")).test()
                 testObserver.assertValue(listImages)
             }
         }
@@ -46,11 +47,11 @@ object GetBreedImageUseCaseSpec : Spek({
         context("when it fails") {
             val exception = Exception("An exception")
             beforeEachTest {
-                every { breedsRepository.getBreedImages("doberman") } returns Single.error(exception)
+                every { breedsRepository.getBreedImages(Breed("doberman")) } returns Single.error(exception)
             }
 
             it("returns an error") {
-                val testObserver = useCase.invoke("doberman").test()
+                val testObserver = useCase.invoke(Breed("doberman")).test()
                 testObserver.assertError(exception)
             }
         }

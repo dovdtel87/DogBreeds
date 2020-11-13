@@ -1,6 +1,5 @@
 package com.dmgdavid2109.dogbreeds.breeds.ui.list
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -21,7 +20,6 @@ class BreedListAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val binding = BreedListItemBinding.inflate(inflater, parent, false)
         return BreedItemViewHolder(
-            parent.context,
             binding,
             onItemTapped
         )
@@ -33,13 +31,12 @@ class BreedListAdapter(
 }
 
 class BreedItemViewHolder(
-    private val context: Context,
     private val binding: BreedListItemBinding,
     private val onItemTapped: (breedItem: Breed) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Breed) {
-        binding.breedName.text = item.capitalize()
+        binding.breedName.text = item.toString().capitalize()
 
         binding.cardView.setOnClickListener {
             onItemTapped(item)

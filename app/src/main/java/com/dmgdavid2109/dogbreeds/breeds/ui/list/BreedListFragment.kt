@@ -48,7 +48,7 @@ class BreedListFragment @Inject constructor(
 
     private fun navigateToDetailsScreen(item: Breed) {
         val action =
-            BreedListFragmentDirections.actionRepositoriesListFragmentToRepositoriesDetailFragment(item)
+            BreedListFragmentDirections.actionBreedListFragmentToBreedDetailFragment(item)
         findNavController().navigate(action)
     }
 }

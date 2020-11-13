@@ -1,11 +1,16 @@
 package com.dmgdavid2109.dogbreeds.breeds.domain.model
 
-typealias Breed = String
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-fun Breed.hasSubBread() = this.contains(' ')
+@Parcelize
+data class Breed(
+    val name: String,
+    val subBreed: String = ""
+) : Parcelable {
+    override fun toString(): String {
+        return "$name $subBreed"
+    }
 
-fun Breed.getBread() =
-    this.substringBefore(" ", this)
-
-fun Breed.getSubbread() =
-    this.substringAfter(" ", "")
+    fun hasSubBread() = subBreed.isNullOrEmpty().not()
+}

@@ -6,6 +6,6 @@ import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
 data class BreedDetailViewState(
     override val isLoading: Boolean = true,
     override val errorMessage: Int? = null,
-    val breed: Breed = "",
+    val breed: Breed = Breed(""),
     val images : List<String> = emptyList()
 ) : LceViewState

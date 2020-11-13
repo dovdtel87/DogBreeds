@@ -10,16 +10,16 @@ class BreedMapper @Inject constructor() : Mapper<BreedResponse, List<@JvmSuppres
     override fun map(input: BreedResponse): List<Breed> {
         val list = mutableListOf<Breed>()
         input.message.keys.toList().forEach{ key ->
-           input.message[key]?.apply {
-               when(this.isEmpty()) {
-                   true -> list.add(key)
-                   false -> {
-                       this.forEach { value ->
-                           list.add("$key $value")
-                       }
-                   }
-               }
-           }
+            input.message[key]?.apply {
+                when(this.isEmpty()) {
+                    true -> list.add(Breed(key))
+                    false -> {
+                        this.forEach { value ->
+                            list.add(Breed(key, value))
+                        }
+                    }
+                }
+            }
         }
         return list
     }

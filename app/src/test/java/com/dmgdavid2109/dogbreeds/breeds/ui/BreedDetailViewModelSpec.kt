@@ -2,9 +2,9 @@ package com.dmgdavid2109.dogbreeds.breeds.ui
 
 import com.dmgdavid2109.dogbreeds.R
 import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
-import com.dmgdavid2109.dogbreeds.breeds.domain.usecase.GetAllBreedsUseCase
-import com.dmgdavid2109.dogbreeds.breeds.ui.list.BreedListViewModel
-import com.dmgdavid2109.dogbreeds.breeds.ui.list.BreedListViewState
+import com.dmgdavid2109.dogbreeds.breeds.domain.usecase.GetBreedImagesUseCase
+import com.dmgdavid2109.dogbreeds.breeds.ui.details.BreedDetailViewModel
+import com.dmgdavid2109.dogbreeds.breeds.ui.details.BreedDetailViewState
 import com.dmgdavid2109.dogbreeds.helpers.getValueTest
 import com.dmgdavid2109.dogbreeds.helpers.mock
 import com.dmgdavid2109.dogbreeds.helpers.withInstantTaskExecutor
@@ -14,33 +14,37 @@ import junit.framework.TestCase.assertEquals
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.specification.describe
 
-class BreedListViewModelSpec : Spek({
+class BreedDetailViewModelSpec : Spek({
     withInstantTaskExecutor()
 
-    val getAllBreedsUseCase: GetAllBreedsUseCase by mock<GetAllBreedsUseCase>()
+    val getBreedImagesUseCase: GetBreedImagesUseCase by mock<GetBreedImagesUseCase>()
+    val breed = Breed("entlebucher")
 
-    val viewModel: BreedListViewModel by memoized {
-        BreedListViewModel(
-            getAllBreedsUseCase
+    val viewModel: BreedDetailViewModel by memoized {
+        BreedDetailViewModel(
+            breed,
+            getBreedImagesUseCase
         )
     }
 
     val list = listOf(
-        Breed("doberman"),
-        Breed("entlebucher"),
-        Breed("schipperke")
+        "https://image1.png",
+        "https://image2.png",
+        "https://image3.png",
+        "https://image4.png"
     )
 
     describe("init") {
         context("when list successfully retrieved") {
             val expectedViewState =
-                BreedListViewState(
+                BreedDetailViewState(
                     false,
                     null,
+                    breed,
                     list
                 )
             beforeEachTest {
-                every { getAllBreedsUseCase.invoke() } returns Single.just(list)
+                every { getBreedImagesUseCase.invoke(breed) } returns Single.just(list)
             }
             it("displays the correct result") {
                 assertEquals(expectedViewState, viewModel.viewState.getValueTest())
@@ -49,13 +53,14 @@ class BreedListViewModelSpec : Spek({
 
         context("when there is an error") {
             val expectedViewStateError =
-                BreedListViewState(
+                BreedDetailViewState(
                     false,
                     R.string.generic_error,
+                    breed,
                     emptyList()
                 )
             beforeEachTest {
-                every { getAllBreedsUseCase.invoke() } returns Single.error(Exception())
+                every { getBreedImagesUseCase.invoke(breed) } returns Single.error(Exception())
             }
             it("displays an error") {
                 assertEquals(expectedViewStateError, viewModel.viewState.getValueTest())

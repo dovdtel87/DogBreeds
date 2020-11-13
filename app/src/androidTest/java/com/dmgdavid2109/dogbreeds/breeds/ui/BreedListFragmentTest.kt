@@ -13,6 +13,7 @@ import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.dmgdavid2109.dogbreeds.breeds.domain.model.Breed
 import com.dmgdavid2109.dogbreeds.breeds.ui.list.BreedListFragment
 import com.dmgdavid2109.dogbreeds.breeds.ui.list.BreedListViewModel
 import com.dmgdavid2109.dogbreeds.breeds.ui.list.BreedListViewState
@@ -37,7 +38,7 @@ class RepositoriesListFragmentTest {
             isLoading = false,
             errorMessage = null,
             breedList = mutableListOf(
-                "doberman"
+                Breed("doberman","")
             )
         )
         val viewModel = mockk<BreedListViewModel>(relaxed = true) {

@@ -32,7 +32,7 @@ class BreedDetailFragment @Inject constructor(
     }
 
     private fun setUpToolbar() {
-        val title = fragmentArguments.breed
+        val title = fragmentArguments.breed.toString().capitalize()
         (activity as AppCompatActivity).setToolbar(binding.toolbar, title, true)
     }
 
