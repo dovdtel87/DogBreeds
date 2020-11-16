@@ -22,7 +22,7 @@ The project use the `UseCases` pattern in order to help identify the different u
 
 In order to handle the navigation between the two fragments I decided to use the Android Navigation Component and adding an animation between the screens.
 
-For adapting the images I used `ViewPager2` and `Glide` library, my aproach for displaying the image is the one implemented by Istagram (scrolling the diferent imagaes left or right).
+For adapting the images I used `ViewPager2` and `Glide` library, my aproach for displaying the image is the one implemented by Istagram (scrolling the diferent images left or right).
 
 For the view holder while the image are loading I introduced an animation where the image is rotating until the picture is loaded
 
